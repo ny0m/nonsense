@@ -1,0 +1,25 @@
+{
+  "name": "@bradmerlin/nonsense",
+  "version": "0.0.1",
+  "description": "A random object generator with a nice API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bradmerlin/nonsense.git"
+  },
+  "keywords": [
+    "random",
+    "random",
+    "object",
+    "generator"
+  ],
+  "author": "br",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bradmerlin/nonsense/issues"
+  },
+  "homepage": "https://github.com/bradmerlin/nonsense#readme"
+}
