@@ -58,12 +58,12 @@ let generators = {
   'float': randomFloat,
 };
 
-function randomInt() {
-  return 4;
+function randomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
 }
 
-function randomFloat() {
-  return 4.4;
+function randomFloat(max) {
+  return Math.random() * max;
 }
 
 function randomString() {
