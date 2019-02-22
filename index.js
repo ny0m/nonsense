@@ -1,2 +1,2 @@
-export * from './nonsense';
-export * from './generators';
+export * from './src/nonsense';
+export * from './src/generators';

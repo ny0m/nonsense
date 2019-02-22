@@ -1,6 +1,6 @@
-import {describe} from 'mocha';
+import { describe } from 'mocha';
 
-import {Generators, Nonsense} from '../index';
+import { Generators, Nonsense } from '../index';
 
 
 describe('Nonsense', function() {
@@ -43,6 +43,7 @@ describe('Nonsense', function() {
       Nonsense(def);
     });
   });
+
   describe('Generate values', function() {
     it('should not error', function() {
       let def = Generators.FLOAT(5);

@@ -1,4 +1,4 @@
-import {Settings} from "./settings";
+import { Settings } from "./settings";
 
 export const Generators = Object.freeze({
   STRING: maybeList(randomString),
