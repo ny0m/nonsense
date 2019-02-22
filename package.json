@@ -4,7 +4,8 @@
   "description": "A random object generator with a nice API.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d lib"
   },
   "repository": {
     "type": "git",
@@ -12,14 +13,20 @@
   },
   "keywords": [
     "random",
-    "random",
     "object",
     "generator"
   ],
-  "author": "br",
+  "author": "Brad Melin",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/bradmerlin/nonsense/issues"
   },
-  "homepage": "https://github.com/bradmerlin/nonsense#readme"
+  "homepage": "https://github.com/bradmerlin/nonsense#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.3",
+    "@babel/preset-env": "^7.3.1",
+    "babelify": "^10.0.0",
+    "browserify": "^16.2.3"
+  }
 }

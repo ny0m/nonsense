@@ -1,4 +1,6 @@
-module.exports = function(definition) {
+import {SETTINGS_MAX} from './settings';
+
+function rawr(definition) {
   return function(number) {
     if (number === undefined) {
       return nonsense(definition);
@@ -12,7 +14,7 @@ module.exports = function(definition) {
   };
 };
 
-function nonsense(definition) {
+export function nonsense(definition) {
   let ret = {};
   for (let key in definition) {
     if (!definition.hasOwnProperty(key)) {
@@ -59,15 +61,23 @@ let generators = {
 };
 
 function randomInt(max) {
+  if (max === undefined) max = SETTINGS_MAX;
   return Math.floor(Math.random() * Math.floor(max));
 }
 
 function randomFloat(max) {
+  if (max === undefined) max = SETTINGS_MAX;
   return Math.random() * max;
 }
 
 function randomString() {
-  return 'jasdnlksjdf';
+  let len = SETTINGS_ALPHA.length;
+  let ret = '';
+
+  for (let i = 0; i < len; i++) {
+    ret = ret + SETTINGS_ALPHA[randomInt(len)];
+  }
+  return ret;
 }
 
 function listGenerator(length, generator) {
