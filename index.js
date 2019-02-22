@@ -1,6 +1,6 @@
-import {SETTINGS_MAX} from './settings';
+import { SETTINGS_MAX } from './settings';
 
-function rawr(definition) {
+export default function rawr(definition) {
   return function(number) {
     if (number === undefined) {
       return nonsense(definition);
@@ -12,7 +12,7 @@ function rawr(definition) {
     }
     return ret;
   };
-};
+}
 
 export function nonsense(definition) {
   let ret = {};
@@ -32,7 +32,7 @@ export function nonsense(definition) {
   return ret;
 }
 
-function parseType(s) {
+export function parseType(s) {
   let groups = s.match(/^(\[(\d*)])?([a-zA-Z]+)$/);
   if (groups === null) {
     throw new Error('Nonsense: Could not parse: ' + s);
@@ -56,8 +56,8 @@ function parseType(s) {
 
 let generators = {
   'string': randomString,
-  'int': randomInt,
-  'float': randomFloat,
+  'int':    randomInt,
+  'float':  randomFloat,
 };
 
 function randomInt(max) {

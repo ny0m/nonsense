@@ -4,8 +4,8 @@
   "description": "A random object generator with a nice API.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src -d lib"
+    "build": "./node_modules/.bin/browserify -t [ babelify ] index.js -o dist/index.js",
+    "test": "./node_modules/.bin/mocha --require @babel/register"
   },
   "repository": {
     "type": "git",
@@ -25,8 +25,12 @@
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.3",
+    "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
+    "@babel/register": "^7.0.0",
     "babelify": "^10.0.0",
-    "browserify": "^16.2.3"
+    "browserify": "^16.2.3",
+    "mocha": "^6.0.1",
+    "nodemon": "^1.18.10"
   }
 }
