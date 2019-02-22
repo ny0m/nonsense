@@ -1,4 +1,10 @@
 export function Nonsense(definition) {
+  return function() {
+    return nonsense(definition);
+  };
+}
+
+function nonsense(definition) {
   if (definition.constructor === Object) {
     let ret = {};
     for (let key in definition) {
@@ -7,7 +13,7 @@ export function Nonsense(definition) {
       }
 
       let value = definition[key];
-      ret[key] = Nonsense(value);
+      ret[key] = nonsense(value);
     }
     return ret;
   }
@@ -15,7 +21,7 @@ export function Nonsense(definition) {
   if (definition.constructor === Array) {
     let ret = [];
     for (let v of definition) {
-      ret.push(Nonsense(v));
+      ret.push(nonsense(v));
     }
     return ret;
   }

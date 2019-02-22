@@ -20,7 +20,7 @@ describe('Nonsense', function() {
           }
         }
       };
-      Nonsense(def);
+      Nonsense(def)();
     });
   });
 
@@ -33,28 +33,28 @@ describe('Nonsense', function() {
         Generators.STRING(5),
         Generators.INT,
         Generators.INT(5),];
-      Nonsense(def);
+      Nonsense(def)();
     });
   });
 
   describe('Generate value', function() {
     it('should not error', function() {
       let def = Generators.FLOAT;
-      Nonsense(def);
+      Nonsense(def)();
     });
   });
 
   describe('Generate values', function() {
     it('should not error', function() {
       let def = Generators.FLOAT(5);
-      Nonsense(def);
+      Nonsense(def)();
     });
   });
 
   describe('Default value', function() {
     it('should not error', function() {
       let def = Generators.VALUE("meow");
-      Nonsense(def);
+      Nonsense(def)();
     });
   });
 });
