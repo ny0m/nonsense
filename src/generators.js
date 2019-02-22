@@ -4,6 +4,7 @@ export const Generators = Object.freeze({
   STRING: maybeList(randomString),
   INT: maybeList(randomInt),
   FLOAT: maybeList(randomFloat),
+  VALUE: maybeList(defaultValue),
 });
 
 
@@ -19,6 +20,12 @@ function maybeList(generator) {
       }
       return ret;
     };
+  };
+}
+
+function defaultValue(value) {
+  return function() {
+    return value;
   };
 }
 

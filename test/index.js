@@ -50,4 +50,11 @@ describe('Nonsense', function() {
       Nonsense(def);
     });
   });
+
+  describe('Default value', function() {
+    it('should not error', function() {
+      let def = Generators.VALUE("meow");
+      Nonsense(def);
+    });
+  });
 });
