@@ -112,9 +112,9 @@ describe('Nonsense', function() {
       let generator = Nonsense(bankAccount);
 
       // New random values each time the generator generates.
-
-      for (let i = 0; i < 5; i++) {
-        console.log(generator());
+      let output = [];
+      for (let i = 0; i < 3; i++) {
+        output.push(generator());
         // But actually use this in a test.
       }
     });

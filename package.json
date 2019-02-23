@@ -1,6 +1,6 @@
 {
   "name": "@bradmerlin/nonsense",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A random object generator with a nice API.",
   "main": "index.js",
   "scripts": {
