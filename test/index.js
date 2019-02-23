@@ -47,20 +47,20 @@ describe('Nonsense', function() {
   describe('Basic generator types are correct', function() {
     let testCases = [
       {
-        name:      'STRING',
+        name: 'STRING',
         generator: Generators.STRING,
-        typeFunc:  s => typeof s === 'string',
+        typeFunc: s => typeof s === 'string',
 
       },
       {
-        name:      'INT',
+        name: 'INT',
         generator: Generators.INT,
-        typeFunc:  Number.isInteger,
+        typeFunc: Number.isInteger,
       },
       {
-        name:      'FLOAT',
+        name: 'FLOAT',
         generator: Generators.FLOAT,
-        typeFunc:  i => typeof i === 'number' && !Number.isInteger(i),
+        typeFunc: i => typeof i === 'number' && !Number.isInteger(i),
       },
     ];
 
@@ -91,6 +91,32 @@ describe('Nonsense', function() {
       let input = Nonsense(Generators.INT(10))();
       let output = Nonsense(Generators.CHOICE(input))();
       assert.equal(input.includes(output), true);
+    });
+  });
+
+  describe('A simple use-case', function() {
+    it('should not error', function() {
+      // Define data structure.
+      let bankAccount = {
+        accountNumber: Generators.INT,
+        accountType: Generators.CHOICE(['cheque', 'savings', 'credit']),
+        beneficiaryIDs: Generators.INT(5),
+        balance: Generators.FLOAT,
+        user: {
+          fullName: Generators.STRING,
+          someStaticValue: Generators.VALUE('Do not change'),
+        },
+      };
+
+      // Create generator
+      let generator = Nonsense(bankAccount);
+
+      // New random values each time the generator generates.
+
+      for (let i = 0; i < 5; i++) {
+        console.log(generator());
+        // But actually use this in a test.
+      }
     });
   });
 });

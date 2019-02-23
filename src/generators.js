@@ -56,7 +56,7 @@ function randomString() {
 
 function randomChoice(values) {
   return function() {
-    let index = _randomInt(values.length);
+    let index = _randomInt(values.length - 1);
     return values[index];
   };
 }
