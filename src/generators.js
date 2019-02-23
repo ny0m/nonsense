@@ -2,11 +2,12 @@ import { Settings } from './settings';
 
 export const Generators = Object.freeze({
   STRING: maybeList(randomString),
-  INT:    maybeList(randomInt),
-  FLOAT:  maybeList(randomFloat),
-  VALUE:  defaultValue,
-  CHOICE: randomChoice,
+  INT: maybeList(randomInt),
+  FLOAT: maybeList(randomFloat),
+  BOOL: maybeList(randomBool),
 
+  VALUE: defaultValue,
+  CHOICE: randomChoice,
 });
 
 
@@ -52,6 +53,10 @@ function randomString() {
     ret = ret + Settings.STRING_BASE[_randomInt(len)];
   }
   return ret;
+}
+
+function randomBool() {
+  return Math.round(Math.random()) === 0;
 }
 
 function randomChoice(values) {

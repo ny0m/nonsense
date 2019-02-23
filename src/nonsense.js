@@ -7,14 +7,9 @@ export function Nonsense(definition) {
 function nonsense(definition) {
   if (definition.constructor === Object) {
     let ret = {};
-    for (let key in definition) {
-      if (!definition.hasOwnProperty(key)) {
-        continue;
-      }
-
-      let value = definition[key];
-      ret[key] = nonsense(value);
-    }
+    Object.keys(definition).forEach(key => {
+      ret[key] = nonsense(definition[key]);
+    });
     return ret;
   }
 

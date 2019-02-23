@@ -4,6 +4,32 @@ import { describe } from 'mocha';
 import { Generators, Nonsense } from '../index';
 
 describe('Nonsense', function() {
+  describe('A simple use-case', function() {
+    it('should not error', function() {
+      // Define data structure.
+      let bankAccount = {
+        accountNumber: Generators.INT,
+        accountType: Generators.CHOICE(['cheque', 'savings', 'credit']),
+        beneficiaryIDs: Generators.INT(5),
+        balance: Generators.FLOAT,
+        user: {
+          fullName: Generators.STRING,
+          someStaticValue: Generators.VALUE('Do not change'),
+        },
+      };
+
+      // Create generator
+      let generator = Nonsense(bankAccount);
+
+      // New random values each time the generator generates.
+      let output = [];
+      for (let i = 0; i < 3; i++) {
+        output.push(generator());
+        // But actually use this in a test.
+      }
+    });
+  });
+
   describe('Data structures', function() {
     it('should correctly generate nested objects', function() {
       let definition = {
@@ -62,6 +88,11 @@ describe('Nonsense', function() {
         generator: Generators.FLOAT,
         typeFunc: i => typeof i === 'number' && !Number.isInteger(i),
       },
+      {
+        name: 'BOOL',
+        generator: Generators.BOOL,
+        typeFunc: i => typeof i === 'boolean',
+      },
     ];
 
     for (let tc of testCases) {
@@ -91,32 +122,6 @@ describe('Nonsense', function() {
       let input = Nonsense(Generators.INT(10))();
       let output = Nonsense(Generators.CHOICE(input))();
       assert.equal(input.includes(output), true);
-    });
-  });
-
-  describe('A simple use-case', function() {
-    it('should not error', function() {
-      // Define data structure.
-      let bankAccount = {
-        accountNumber: Generators.INT,
-        accountType: Generators.CHOICE(['cheque', 'savings', 'credit']),
-        beneficiaryIDs: Generators.INT(5),
-        balance: Generators.FLOAT,
-        user: {
-          fullName: Generators.STRING,
-          someStaticValue: Generators.VALUE('Do not change'),
-        },
-      };
-
-      // Create generator
-      let generator = Nonsense(bankAccount);
-
-      // New random values each time the generator generates.
-      let output = [];
-      for (let i = 0; i < 3; i++) {
-        output.push(generator());
-        // But actually use this in a test.
-      }
     });
   });
 });
