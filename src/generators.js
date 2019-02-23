@@ -1,10 +1,12 @@
-import { Settings } from "./settings";
+import { Settings } from './settings';
 
 export const Generators = Object.freeze({
   STRING: maybeList(randomString),
-  INT: maybeList(randomInt),
-  FLOAT: maybeList(randomFloat),
-  VALUE: maybeList(defaultValue),
+  INT:    maybeList(randomInt),
+  FLOAT:  maybeList(randomFloat),
+  VALUE:  defaultValue,
+  CHOICE: randomChoice,
+
 });
 
 
@@ -31,7 +33,11 @@ function defaultValue(value) {
 
 
 function randomInt() {
-  return Math.floor(Math.random() * Math.floor(Settings.NUMBER_MAX));
+  return _randomInt(Settings.NUMBER_MAX);
+}
+
+function _randomInt(max) {
+  return Math.round(Math.random() * max);
 }
 
 function randomFloat() {
@@ -43,7 +49,14 @@ function randomString() {
   let ret = '';
 
   for (let i = 0; i < len; i++) {
-    ret = ret + Settings.STRING_BASE[randomInt(len)];
+    ret = ret + Settings.STRING_BASE[_randomInt(len)];
   }
   return ret;
+}
+
+function randomChoice(values) {
+  return function() {
+    let index = _randomInt(values.length);
+    return values[index];
+  };
 }
